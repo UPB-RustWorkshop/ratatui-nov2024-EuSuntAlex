@@ -15,8 +15,10 @@ pub struct CityInfo {
 /// Returns weather details about a certain city
 pub async fn get_data(app: &App) -> Result<CityInfo, MyError>{
     let name = app.city[app.indicator];
+    let my_api = "";
+
     let my_url = format!(
-        "http://api.openweathermap.org/data/2.5/weather?q={}&APPID=22817049fc6a80979de5bb18c1109696&units=metric", name);
+        "http://api.openweathermap.org/data/2.5/weather?q={}&APPID={}&units=metric", name, my_api);
     match reqwest::get(my_url).await {
         Ok(response) => {
             // Check status code
